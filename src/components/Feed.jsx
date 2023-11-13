@@ -1,8 +1,18 @@
 import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { Sidebar, Videos } from "./";
+import { fetchFromApi } from "../utils/FetchFromApi";
 
 const Feed = () => {
+  const [selectedCategory, setSelectedCategory] = useState("New");
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    fetchFromApi(`search?part=snippet&q=${selectedCategory}`).then((data) =>
+      setVideos(data.items)
+    );
+  }, [selectedCategory]);
+
   return (
     // this stack got a flexDir for normal devices and md and lower
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
@@ -15,7 +25,10 @@ const Feed = () => {
           px: { sx: 0, md: 2 },
         }}
       >
-        <Sidebar />
+        <Sidebar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
         {/* this txt gets a class name and a variant not sure what that is and extra styling for margin and txt color */}
         <Typography
           className="copyright"
@@ -34,10 +47,10 @@ const Feed = () => {
           mb={2}
           sx={{ color: "white" }}
         >
-          New <span style={{ color: "#F31503" }}>Videos</span>
+          {selectedCategory} <span style={{ color: "#F31503" }}>Videos</span>
         </Typography>
         {/* need to fetch the videos */}
-        <Videos videos={[]} />
+        <Videos videos={videos} />
       </Box>
     </Stack>
   );
