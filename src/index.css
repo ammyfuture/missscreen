@@ -1,0 +1,104 @@
+/* re setting the margin and padding and adding box sizing */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* adding styling to anchor, text deco none and color is black for now */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* web kit scroll bar bar styling, width, height, for thumb bg color and border radius and height so thumb is diff than jus the scrollbar, then a track and we have bg color transparent  */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(114, 113, 113);
+  border-radius: 10px;
+  height: 200px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* setting the bg and txt color for the hover on a btn */
+.category-btn:hover {
+  background-color: #fc1503 !important;
+  color: white !important;
+}
+
+/* setting txt color on the span that shows up when we hover over btn */
+.category-btn:hover span {
+  color: white !important;
+}
+
+/* not sure what this, but we set hight and weight */
+.react-player {
+  height: 77vh !important;
+  width: 100% !important;
+}
+
+/* not sure either prob an input and we set the border and outline and width */
+.search-bar {
+  border: none;
+  outline: none;
+  width: 350px;
+}
+
+/* this is the btn we set the hover and span for */
+/* we set the font weight and make txt capitalize and we make it a flex and we align its items center and justify its content right and give it a cursor and we make the bg transparent and we give it an outline and border and padding and margin and border radius and transition  */
+.category-btn {
+  font-weight: bold !important;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: none;
+
+  padding: 7px 15px;
+  margin: 10px 0px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+/* media for screens less than 900px */
+/* we just change the btn margin */
+@media screen and (max-width: 900px) {
+  .category-btn {
+    margin: 10px;
+  }
+}
+/* media for screens less than 800px */
+/* we just change the display of something to none */
+@media screen and (max-width: 800px) {
+  .copyright {
+    display: none !important;
+  }
+}
+
+/* media for screens less than 600px */
+/* we just change scroll and height of react-player and input search bars width */
+@media screen and (max-width: 600px) {
+  .scroll-horizontal {
+    overflow: auto !important;
+  }
+
+  .react-player {
+    height: 45vh !important;
+  }
+  .search-bar {
+    width: 200px;
+  }
+}
+
+/* lets see if we add more code here or if thats all and well see what we do with mui because this is pure css it seems */
