@@ -11,9 +11,8 @@ import {
 } from "../utils/constants";
 
 const VideoCard = ({ video, videoDet }) => {
-  console.log(video);
-  console.log(videoDet);
-
+  // console.log(video);
+  // console.log(videoDet);
   // console.log(video);
   // console.log(video?.channelId);
   // console.log(video?.channelThumbnail);
@@ -38,7 +37,11 @@ const VideoCard = ({ video, videoDet }) => {
         }}
       >
         {/* this is for each video, and the link should work and take us to each videos page, path is video/videoid */}
-        <Link to={video?.videoId ? `video/${video?.videoId}` : demoVideoUrl}>
+        <Link
+          to={
+            video?.videoId ? `/video/${video?.videoId}` : "/video/GDa8kZLNhJ4"
+          }
+        >
           <CardMedia
             image={video?.thumbnail?.[0].url}
             alt={video?.title}
@@ -48,7 +51,11 @@ const VideoCard = ({ video, videoDet }) => {
 
         {/* this was linking to the video too, its for the title of the video */}
         <CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
-          <Link to={video?.videoId ? `video/${video?.videoId}` : demoVideoUrl}>
+          <Link
+            to={
+              video?.videoId ? `/video/${video?.videoId}` : "/video/GDa8kZLNhJ4"
+            }
+          >
             <Typography variant="subtitle1" fontWeight="bold" color="#fff">
               {video?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
             </Typography>
@@ -81,7 +88,8 @@ const VideoCard = ({ video, videoDet }) => {
         }}
       >
         <Link
-          to={videoDet?.videoId ? `video/${videoDet?.videoId}` : demoVideoUrl}
+          // video?.videoId ? `/video/${video?.videoId}` : "/video/GDa8kZLNhJ4
+          to={videoDet?.videoId ? `/video/${videoDet?.videoId}` : demoVideoUrl}
         >
           <CardMedia
             image={videoDet?.thumbnail?.[2].url}
@@ -92,7 +100,9 @@ const VideoCard = ({ video, videoDet }) => {
         </Link>
         <CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
           <Link
-            to={videoDet?.videoId ? `video/${videoDet?.videoId}` : demoVideoUrl}
+            to={
+              videoDet?.videoId ? `/video/${videoDet?.videoId}` : demoVideoUrl
+            }
           >
             <Typography variant="subtitle1" fontWeight="bold" color="#fff">
               {videoDet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
