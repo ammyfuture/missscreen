@@ -3,9 +3,7 @@ import { CheckCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { demoProfilePicture } from "../utils/constants";
 
-const ChannelCard = ({ channelDetail }) => {
-  console.log(channelDetail?.channelTitle);
-
+const ChannelCard = ({ ChannelCard, channelDet, marginTop }) => {
   return (
     <Box
       sx={{
@@ -17,11 +15,13 @@ const ChannelCard = ({ channelDetail }) => {
         width: { xs: "364px", md: "338px" },
         height: "326px",
         margin: "auto",
+        marginTop,
       }}
     >
       <Link
         // extracting the channel id following the obj path to it
-        to={`/channel/${channelDetail?.id?.channelId}`}
+
+        to={`/channel/${ChannelCard?.channelId}`}
       >
         <CardContent
           sx={{
@@ -33,8 +33,14 @@ const ChannelCard = ({ channelDetail }) => {
           }}
         >
           <CardMedia
-            image={channelDetail?.thumbnail?.[1].url || demoProfilePicture}
-            alt={channelDetail?.channelTitle}
+            image={
+              ChannelCard
+                ? ChannelCard?.thumbnail?.[1].url || demoProfilePicture
+                : channelDet?.meta?.thumbnail?.[2].url || demoProfilePicture
+            }
+            alt={
+              ChannelCard ? ChannelCard?.channelTitle : channelDet?.meta?.title
+            }
             sx={{
               borderRadius: "50%",
               // height: 176,
@@ -46,12 +52,19 @@ const ChannelCard = ({ channelDetail }) => {
             }}
           />
           <Typography variant="h6">
-            {channelDetail?.channelTitle}
+            {ChannelCard ? ChannelCard?.channelTitle : channelDet?.meta?.title}
             <CheckCircle sx={{ fontSize: 14, color: "gray", ml: "5px" }} />
           </Typography>
-          {channelDetail?.subscriberCount && (
-            <Typography>{channelDetail?.subscriberCount}</Typography>
-          )}
+
+          {ChannelCard
+            ? ChannelCard?.subscriberCount && (
+                <Typography>{ChannelCard?.subscriberCount}</Typography>
+              )
+            : channelDet?.meta?.subscriberCount && (
+                <Typography>
+                  {channelDet?.meta?.subscriberCount} subscribers
+                </Typography>
+              )}
         </CardContent>
       </Link>
     </Box>
