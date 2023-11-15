@@ -31,7 +31,8 @@ const VideoCard = ({ video, videoDet }) => {
     content = (
       <Card
         sx={{
-          width: { md: "340px", xs: "100%" },
+          // width: { md: "340px", xs: "100%" }
+          width: { xs: "100%", sm: "358", md: "320px" },
           boxShadow: "none",
           borderRadius: "none",
         }}
@@ -45,7 +46,17 @@ const VideoCard = ({ video, videoDet }) => {
           <CardMedia
             image={video?.thumbnail?.[0].url}
             alt={video?.title}
-            sx={{ width: 360, height: 202 }}
+            // sx={{ width: 360, height: 202 }}
+
+            sx={{
+              width: {
+                xs: "100%",
+                sm: "358px",
+                md: "320px",
+              },
+              // height: 180,
+              height: 202,
+            }}
           />
         </Link>
 
@@ -82,7 +93,7 @@ const VideoCard = ({ video, videoDet }) => {
     content = (
       <Card
         sx={{
-          width: { md: "340px", xs: "100%" },
+          width: { xs: "100%", sm: "358", md: "320px" },
           boxShadow: "none",
           borderRadius: "none",
         }}
@@ -95,7 +106,15 @@ const VideoCard = ({ video, videoDet }) => {
             image={videoDet?.thumbnail?.[2].url}
             alt={videoDet?.title}
             // sx={{ width: 360, height: 202 }}
-            sx={{ width: 360, height: 202 }}
+            sx={{
+              width: {
+                xs: "100%",
+                sm: "358px",
+                md: "320px",
+              },
+              // height: 180,
+              height: 202,
+            }}
           />
         </Link>
         <CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
