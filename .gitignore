@@ -10,7 +10,7 @@
 /build
 
 # Secret
-.envgit 
+.env
 
 # misc
 .DS_Store
