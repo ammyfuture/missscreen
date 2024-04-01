@@ -1,41 +1,34 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
-import { CheckCircle } from "@mui/icons-material";
-import { Videos } from "./";
-import { fetchRelatedVideos } from "../utils/fetchRelatedVideos";
-import { fetchVideoDetails } from "../utils/fetchVideoDetails";
-import { RelatedVideos } from "./";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+
+import { Videos, Loader } from "./";
+import { fetchFromAPI } from "../utils/fetchFromAPI";
 
 const VideoDetail = () => {
+  const [videoDetail, setVideoDetail] = useState(null);
+  const [videos, setVideos] = useState(null);
   const { id } = useParams();
-  const [video, setVideo] = useState({});
-  const [relatedVideos, setRelatedVideos] = useState({});
+
   useEffect(() => {
-    // fetchSearchFromApi(id, setVideos);
-    fetchVideoDetails(id, setVideo);
-    fetchRelatedVideos(id, setRelatedVideos);
+    fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
+      setVideoDetail(data.items[0])
+    );
+
+    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
+      (data) => setVideos(data.items)
+    );
   }, [id]);
 
-  console.log(video);
-  console.log(relatedVideos);
+  if (!videoDetail?.snippet) return <Loader />;
 
-  // console.log(videos.title);
-  if (!video) return "Loading...";
-  if (!relatedVideos) return "Loading...";
   const {
-    title,
-    channelId,
-    channelTitle,
-    description,
-    publishDate,
-    viewCount,
-  } = video;
-  const { data } = relatedVideos;
-  console.log(data);
+    snippet: { title, channelId, channelTitle },
+    statistics: { viewCount, likeCount },
+  } = videoDetail;
 
-  console.log(publishDate);
   return (
     <Box minHeight="95vh">
       <Stack direction={{ xs: "column", md: "row" }}>
@@ -62,7 +55,7 @@ const VideoDetail = () => {
                   color="#fff"
                 >
                   {channelTitle}
-                  <CheckCircle
+                  <CheckCircleIcon
                     sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
                   />
                 </Typography>
@@ -71,10 +64,8 @@ const VideoDetail = () => {
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
                   {parseInt(viewCount).toLocaleString()} views
                 </Typography>
-
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {/* {publishDate} */}
-                  {/* {parseInt(viewCount).toLocaleString()} views */}
+                  {parseInt(likeCount).toLocaleString()} likes
                 </Typography>
               </Stack>
             </Stack>
@@ -86,10 +77,11 @@ const VideoDetail = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Videos videos={data} direction="column" />
+          <Videos videos={videos} direction="column" />
         </Box>
       </Stack>
     </Box>
   );
 };
+
 export default VideoDetail;

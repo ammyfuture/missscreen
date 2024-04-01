@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
-import { Sidebar, Videos } from "./";
-import { fetchSearchFromApi } from "../utils/fetchSearchFromApi";
+
+import { fetchFromAPI } from "../utils/fetchFromAPI";
+import { Videos, Sidebar } from "./";
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
-  const [videos, setVideos] = useState([]);
-
-  console.log(videos);
+  const [videos, setVideos] = useState(null);
 
   useEffect(() => {
-    fetchSearchFromApi(selectedCategory, setVideos);
+    setVideos(null);
+
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
+      setVideos(data.items)
+    );
   }, [selectedCategory]);
 
   return (
-    // this stack got a flexDir for normal devices and md and lower
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
-      {/* this box, got a height prop, a borderRight and a padding horizontal- two got custom for normal and md screens */}
-      {/* the side bar box */}
       <Box
         sx={{
           height: { sx: "auto", md: "92vh" },
@@ -29,17 +29,16 @@ const Feed = () => {
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
-        {/* this txt gets a class name and a variant not sure what that is and extra styling for margin and txt color */}
+
         <Typography
           className="copyright"
           variant="body2"
           sx={{ mt: 1.5, color: "#fff" }}
         >
-          Copyright 2023 Miss Screen
+          Copyright © 2022 JSM Media
         </Typography>
       </Box>
 
-      {/* the feed box */}
       <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
         <Typography
           variant="h4"
@@ -47,12 +46,13 @@ const Feed = () => {
           mb={2}
           sx={{ color: "white" }}
         >
-          {selectedCategory} <span style={{ color: "#3b342c" }}>Videos</span>
+          {selectedCategory} <span style={{ color: "#ff5d8f" }}>videos</span>
         </Typography>
-        {/* need to fetch the videos */}
+
         <Videos videos={videos} />
       </Box>
     </Stack>
   );
 };
+
 export default Feed;

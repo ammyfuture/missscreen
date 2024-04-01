@@ -1,4 +1,3 @@
-// icons imported from mui
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import HomeIcon from "@mui/icons-material/Home";
 import CodeIcon from "@mui/icons-material/Code";
@@ -14,18 +13,14 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
 import missScreenLogo from "./missscreen-logo.png";
 
-// a logo he created
-export const logo = "https://i.ibb.co/s9Qys2j/logo.png";
-export const logo2 = missScreenLogo;
+export const logo = missScreenLogo;
 
-// an array made up of objects
-// I think these are the ones imported up but there is more here
 export const categories = [
   { name: "New", icon: <HomeIcon /> },
-  { name: "JS Mastery", icon: <CodeIcon /> },
+  { name: "IU", icon: <MusicNoteIcon /> },
   { name: "Coding", icon: <CodeIcon /> },
+  { name: "Kpop", icon: <MusicNoteIcon /> },
   { name: "ReactJS", icon: <CodeIcon /> },
-  { name: "NextJS", icon: <CodeIcon /> },
   { name: "Music", icon: <MusicNoteIcon /> },
   { name: "Education", icon: <SchoolIcon /> },
   { name: "Podcast", icon: <GraphicEqIcon /> },
@@ -40,7 +35,6 @@ export const categories = [
   { name: "Crypto", icon: <DeveloperModeIcon /> },
 ];
 
-// not sure what we do with these but they're links
 export const demoThumbnailUrl = "https://i.ibb.co/G2L2Gwp/API-Course.png";
 export const demoChannelUrl = "/channel/UCmXmlB4-HJytD7wek0Uo97A";
 export const demoVideoUrl = "/video/GDa8kZLNhJ4";
@@ -49,5 +43,3 @@ export const demoVideoTitle =
   "Build and Deploy 5 JavaScript & React API Projects in 10 Hours - Full Course | RapidAPI";
 export const demoProfilePicture =
   "http://dergipark.org.tr/assets/app/images/buddy_sample.png";
-
-//   change things here to my taste and goals later
