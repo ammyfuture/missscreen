@@ -12,9 +12,11 @@ import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 import TheaterComedyIcon from "@mui/icons-material/TheaterComedy";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
+import missScreenLogo from "./missscreen-logo.png";
 
 // a logo he created
 export const logo = "https://i.ibb.co/s9Qys2j/logo.png";
+export const logo2 = missScreenLogo;
 
 // an array made up of objects
 // I think these are the ones imported up but there is more here

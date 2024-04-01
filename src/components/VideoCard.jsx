@@ -61,7 +61,7 @@ const VideoCard = ({ video, videoDet }) => {
         </Link>
 
         {/* this was linking to the video too, its for the title of the video */}
-        <CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
+        <CardContent sx={{ backgroundColor: "#3b342c", height: "106px" }}>
           <Link
             to={
               video?.videoId ? `/video/${video?.videoId}` : "/video/GDa8kZLNhJ4"
@@ -117,7 +117,7 @@ const VideoCard = ({ video, videoDet }) => {
             }}
           />
         </Link>
-        <CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
+        <CardContent sx={{ backgroundColor: "#3b342c", height: "106px" }}>
           <Link
             to={
               videoDet?.videoId ? `/video/${videoDet?.videoId}` : demoVideoUrl

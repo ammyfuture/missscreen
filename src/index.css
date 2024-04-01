@@ -9,7 +9,7 @@ body {
 /* adding styling to anchor, text deco none and color is black for now */
 a {
   text-decoration: none;
-  color: black;
+  color: gray;
 }
 
 /* web kit scroll bar bar styling, width, height, for thumb bg color and border radius and height so thumb is diff than jus the scrollbar, then a track and we have bg color transparent  */
@@ -19,7 +19,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(114, 113, 113);
+  background-color: #3b342c;
   border-radius: 10px;
   height: 200px;
 }
@@ -30,7 +30,7 @@ a {
 
 /* setting the bg and txt color for the hover on a btn */
 .category-btn:hover {
-  background-color: #fc1503 !important;
+  background-color: #3b342c !important;
   color: white !important;
 }
 
